@@ -27,3 +27,9 @@ const F = [
 ];
 
 export const pieces = { A, B, C, D, E, F };
+
+const getRandomRotation = (piece) => piece[Math.floor(Math.random() * piece.length)];
+
+const getRandomPiece = () => Object.values(pieces)[Math.floor(Math.random() * Object.keys(pieces).length)];
+
+export const getRandomPieceMatrix = () => getRandomRotation(getRandomPiece());
