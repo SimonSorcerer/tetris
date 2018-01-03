@@ -1,0 +1,87 @@
+@mixin font($size: false, $colour: false, $weight: false,  $lh: false) {
+    font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier;
+    @if $size { font-size: $size; }
+    @if $colour { color: $colour; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+}
+
+@mixin font__default {
+    @include font(15px, false, 200, 22px);
+}
+
+@mixin font__heading {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+@mixin padding__basic {
+    padding: 10px;
+}
+
+@mixin margin__basic {
+    margin: 10px 0;
+}
+
+$color_F: #FFF;
+$color_X: #B0B1A2;
+$color_A: #292A21;
+$piece_size: 15px;
+
+body {
+    @include font__default;
+    background-color: $color_A;
+    color: $color_X;
+    line-height: 22px;
+}
+
+a, a:link, a:visited {
+    color: $color_X;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.game {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.game__main {
+    @include margin__basic;
+    border: 2px dashed $color_X;
+    height: 600px;
+}
+
+.game__head {
+    @include margin__basic;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 80px;
+}
+
+.score {
+}
+
+.next {
+    
+}
+
+.piece__row {
+    display: flex;
+}
+  
+.piece__block {
+    width: $piece_size;
+    height: $piece_size;
+    background-color: $color_X;
+    margin: 1px;
+    box-sizing: border-box;
+}
+
+.piece__empty {
+    background-color: $color_A;
+}
