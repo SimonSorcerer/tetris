@@ -4,3 +4,9 @@ export const addScore = (score) => {
         score
     }
 }
+
+export const startGame = () => {
+    return {
+        type: 'START_GAME'
+    }
+}

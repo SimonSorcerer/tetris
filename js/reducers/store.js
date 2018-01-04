@@ -1,12 +1,19 @@
 import { createStore } from 'redux';
 import { getRandomPieceMatrix } from 'helpers/pieces';
 
+const board = {
+    width: 26,
+    height: 30
+};
+
 const defaultState = {
     score: 120,
     gameIsRunning: false,
     nextPiece: getRandomPieceMatrix(),
     currentPiece: null,
-    currentPieceRotation: 0
+    currentPiecePosition: null,
+    currentPieceRotation: 0,
+    board: Array(board.height).fill(Array(board.width).fill(0))
 }
 
 const gameReducers = (state = defaultState, action) => {
@@ -17,6 +24,7 @@ const gameReducers = (state = defaultState, action) => {
                 ...state,
                 gameIsRunning: true,
                 currentPiece: state.nextPiece,
+                currentPiecePosition: { x: 0, y: board.width / 2 - Math.floor(state.nextPiece.lenght / 2) },
                 nextPiece: getRandomPieceMatrix()
             }
         case 'ADD_SCORE': 

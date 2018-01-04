@@ -29,7 +29,7 @@ module.exports = {
                 include: /js/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'es2015', 'babel-preset-stage-2']
+                    presets: ['react', 'es2015', 'stage-2']
                 }
             },
             {

@@ -1,14 +1,24 @@
 import React from 'react';
 
-import Score from 'views/score';
-import Next from 'views/next';
+import Score from 'controllers/score';
+import Next from 'controllers/next';
+import Board from 'controllers/board';
 
-export default ({ score, nextPiece }) => (
+const renderMenu = (startHandler) => (
+    <div className='game__menu'>
+        <button className='menu__start' onClick={ startHandler }>START</button>
+    </div>
+);
+
+export default ({ gameIsRunning, startHandler }) => (
     <div className='game'>
         <div className='game__head'>
-            <Score score={ score } />
-            <Next item={ nextPiece } />
+            <Score />
+            <Next />
         </div>
-        <div className='game__main'></div>
+        <div className='game__main'>
+            <Board />
+            { gameIsRunning || renderMenu(startHandler) }
+        </div>
     </div>
 );
