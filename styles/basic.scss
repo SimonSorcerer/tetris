@@ -39,6 +39,7 @@
 
 $color_F: #FFF;
 $color_X: #B0B1A2;
+$color_XO: #373829;
 $color_A: #292A21;
 $piece_size: 15px;
 
@@ -114,6 +115,10 @@ button {
 
 .piece__block--empty {
     background-color: $color_A;
+}
+
+.board--grid {
+    background-color: $color_XO;
 }
 
 .board--dimmed {

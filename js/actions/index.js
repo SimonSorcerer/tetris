@@ -10,3 +10,9 @@ export const startGame = () => {
         type: 'START_GAME'
     }
 }
+
+export const timeTick = () => {
+    return {
+        type: 'TIME_TICK'
+    }
+}

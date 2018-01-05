@@ -3,10 +3,34 @@ import { connect } from 'react-redux'
 import View from 'views/board'
 
 const mapStateToProps = (state) => ({
-    board: state.board,
+    data: getBoardData(state),
     gameIsRunning: state.gameIsRunning
 });
 
-const Board = (props) => <View data={ props.board } isDimmed={ !props.gameIsRunning } />
+const cloneBoard = (board) => board.map(row => row.slice(0));
+
+
+const getBoardData = (state) => {
+    const activePiece = state.activePiece;
+    const board = cloneBoard(state.board);
+
+    if (!state.gameIsRunning) {
+        return board;
+    }
+
+    console.log(activePiece);
+    
+    const addBlock = (block, x, y) => board[activePiece.position.x + x][activePiece.position.y + y] = block;
+    const addRow = (row, x) => row.forEach((block, y) => addBlock(block, x, y));
+
+    console.log(activePiece.data);
+    activePiece.data.forEach((row, x) => addRow(row, x));
+
+    console.log(board);
+
+    return board;
+};
+
+const Board = (props) => <View { ...props } gridOn={ true } />
 
 export default connect(mapStateToProps)(Board)
