@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Score from 'controllers/score';
+import Timer from 'controllers/timer';
 import Next from 'controllers/next';
 import Board from 'controllers/board';
 
@@ -15,6 +16,7 @@ export default ({ gameIsRunning, startHandler }) => (
         <div className='game__head'>
             <Score />
             <Next />
+            <Timer />
         </div>
         <div className='game__main'>
             <Board />

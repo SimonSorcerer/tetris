@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { timeTick } from 'actions';
-import GameView from 'views/game';
 
 const mapStateToProps = (state) => {
     return {
-        gameIsRunning: state.gameIsRunning
+        gameIsRunning: state.gameIsRunning,
+        time: state.time
     }
 }
 
@@ -15,10 +15,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-class Timer extends React.Component {
-    render() {
-        return <div></div>;
-    }
-};
+const Timer = (props) => <div className='timer'>TIME: { props.time }</div>;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game)
+export default connect(mapStateToProps, mapDispatchToProps)(Timer)

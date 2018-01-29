@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 import { getRandomPieceMatrix } from 'helpers/pieces';
+import { startTimer } from 'helpers/time';
 
 const board = {
     width: 26,
@@ -8,7 +9,7 @@ const board = {
 
 const defaultState = {
     score: 120,
-    timer: 0,
+    time: 0,
     gameIsRunning: false,
     nextPiece: getRandomPieceMatrix(),
     activePiece: {
@@ -22,6 +23,8 @@ const gameReducers = (state = defaultState, action) => {
     switch (action.type) {
         case 'START_GAME': 
             console.log('starting game');
+            
+            startTimer(500);
             return {
                 ...state,
                 gameIsRunning: true,
@@ -40,7 +43,7 @@ const gameReducers = (state = defaultState, action) => {
         case 'TIME_TICK':
             return {
                 ...state,
-                timer: timer + 1,
+                time: state.time + 1,
                 activePiece: {
                     ...state.activePiece,
                     position: {
